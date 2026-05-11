@@ -2,6 +2,9 @@
 using CQRS.Domain.Interfaces;
 using CQRS.Features.Categories.CreateCategory.Endpoints;
 using CQRS.Features.Categories.GetAllCategories.Endpoints;
+using CQRS.Features.Products.Createproduct.Endpoints;
+using CQRS.Features.Products.GetAllProduct.Endpoints;
+using CQRS.Features.Products.GetProductById.Endpoints;
 using CQRS.Infrastructure;
 using CQRS.Infrastructure.Repositories;
 using CQRS.Infrastructure.UnitOfWork;
@@ -42,14 +45,15 @@ namespace CQRS
                 app.UseSwaggerUI();
             }
 
+            
+            app.MapCreateCategoryEndpoint();
+            app.MapGetAllCategoriesEndpoint();
+            app.MapCreateProductEndpoint();
+            app.MapGetAllProductsEndpoint();
+            app.MapGetProductByIdEndpoint();
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
-
-            app.MapControllers();
-            app.MapCreateCategoryEndpoint();
-            app.MapGetAllCategoriesEndpoint();
 
             app.Run();
         }
